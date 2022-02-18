@@ -1,6 +1,5 @@
 <script>
   export let outputText;
-  export let outputIndex;
   export let setOutputText;
   export let setOutputIndex;
 
