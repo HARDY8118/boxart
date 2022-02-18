@@ -179,11 +179,11 @@
     bind:this={textInput}
   />
   <div class="btn-container">
-    <button on:click={deleteChar}>&#x2190;</button>
+    <button on:click={deleteChar}>&#x2190; Backspace</button>
     <button
       on:click={() => {
         appendChar("\n");
-      }}>&#x21B5;</button
+      }}>&#x21B5; Enter</button
     >
   </div>
   <div class="help-text">
@@ -200,7 +200,7 @@
     margin: auto;
 
     table {
-      margin: auto;
+      margin: 2em auto;
       tr {
         margin: 0;
         td {
