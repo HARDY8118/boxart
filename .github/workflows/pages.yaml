@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
-      
+
       - name: "Install yarn"
         run: npm install yarn
 
@@ -24,11 +24,11 @@ jobs:
 
       - name: "Build app"
         run: yarn build
-      
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          publish_branch: main
+          publish_branch: pages
