@@ -6,9 +6,22 @@
   export let outputText;
 
   let textInput;
+  let copyOnPressEnabled = false;
 
   function handleInput(e) {
     e.preventDefault();
+
+    if (copyOnPressEnabled) {
+      try {
+        navigator.clipboard.writeText(e.target.innerText);
+      } catch (err) {
+        e.target.select();
+        e.target.execCommand("copy");
+      } finally {
+        return;
+      }
+    }
+
     appendChar(e.target.innerText);
     if (outputIndex != outputText.length && outputIndex != -1) {
       setOutputIndex(outputIndex + 1);
@@ -185,6 +198,14 @@
         appendChar("\n");
       }}>&#x21B5; Enter</button
     >
+    <button
+      on:click={() => {
+        copyOnPressEnabled = !copyOnPressEnabled;
+      }}
+      style={copyOnPressEnabled &&
+        "border: solid 1px black; background-color: darkblue; color: white;"}
+      >&#x1F4CB;Copy On Press
+    </button>
   </div>
   <div class="help-text">
     Click on button, press space to repeat character.<br />
